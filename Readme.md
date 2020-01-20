@@ -37,7 +37,7 @@ Example Playbook
 
     - hosts: all
       roles:
-      - role: ansible-role-filebeat
+        - role: ansible-role-filebeat
 
 Testing
 -------
