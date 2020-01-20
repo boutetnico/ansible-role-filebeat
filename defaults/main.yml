@@ -1,0 +1,28 @@
+---
+filebeat_dependencies:
+  - apt-transport-https
+
+filebeat_use_oss: false
+
+filebeat_config:
+  filebeat:
+    inputs:
+      - type: log
+        paths:
+          - /var/log/syslog
+          - /var/log/auth.log
+        fields:
+          type: syslog
+      - type: log
+        paths:
+          - /var/log/nginx/access.log
+          - /var/log/nginx/error.log
+        fields:
+          type: nginx
+  output:
+    logstash:
+      hosts:
+        - localhost:5044
+  logging:
+    to_syslog: false
+    level: warning

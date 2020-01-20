@@ -1,0 +1,46 @@
+---
+- name: Install dependencies
+  apt:
+    name: "{{ filebeat_dependencies }}"
+    state: present
+
+- name: Add filebeat signing key
+  apt_key:
+    state: present
+    url: "{{ filebeat_signing_key }}"
+
+- name: Manage filebeat APT repository
+  apt_repository:
+    repo: "{{ filebeat_repository }}"
+    state: "{{ 'absent' if filebeat_use_oss else 'present' }}"
+
+- name: Manage filebeat OSS APT repository
+  apt_repository:
+    repo: "{{ filebeat_oss_repository }}"
+    state: "{{ 'present' if filebeat_use_oss else 'absent' }}"
+
+- name: Manage filebeat package
+  apt:
+    name: "{{ filebeat_package }}"
+    state: "{{ 'absent' if filebeat_use_oss else 'present' }}"
+
+- name: Manage filebeat OSS package
+  apt:
+    name: "{{ filebeat_oss_package }}"
+    state: "{{ 'present' if filebeat_use_oss else 'absent' }}"
+
+- name: Setup filebeat.yml
+  template:
+    dest: /etc/filebeat/filebeat.yml
+    group: root
+    mode: 0600
+    owner: root
+    src: filebeat.yml.j2
+  notify:
+    - restart filebeat
+
+- name: Ensure filebeat is started and starts at boot
+  service:
+    enabled: true
+    name: filebeat
+    state: started
