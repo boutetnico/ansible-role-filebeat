@@ -1,8 +1,6 @@
 ---
 filebeat_signing_key: https://artifacts.elastic.co/GPG-KEY-elasticsearch
 
-filebeat_package: filebeat
 filebeat_repository: "deb https://artifacts.elastic.co/packages/7.x/apt stable main"
 
-filebeat_oss_package: filebeat-oss
 filebeat_oss_repository: "deb https://artifacts.elastic.co/packages/oss-7.x/apt stable main"

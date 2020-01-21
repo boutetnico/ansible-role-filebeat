@@ -2,6 +2,8 @@
 filebeat_dependencies:
   - apt-transport-https
 
+filebeat_package: filebeat
+
 filebeat_use_oss: false
 
 filebeat_config:

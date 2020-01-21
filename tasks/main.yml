@@ -19,15 +19,11 @@
     repo: "{{ filebeat_oss_repository }}"
     state: "{{ 'present' if filebeat_use_oss else 'absent' }}"
 
-- name: Manage filebeat package
+- name: Ensure filebeat package is installed
   apt:
     name: "{{ filebeat_package }}"
-    state: "{{ 'absent' if filebeat_use_oss else 'present' }}"
-
-- name: Manage filebeat OSS package
-  apt:
-    name: "{{ filebeat_oss_package }}"
-    state: "{{ 'present' if filebeat_use_oss else 'absent' }}"
+    state: present
+    update_cache: true
 
 - name: Setup filebeat.yml
   template:
