@@ -1,6 +1,7 @@
 ---
 filebeat_dependencies:
   - apt-transport-https
+  - gnupg
 
 filebeat_package: filebeat
 
