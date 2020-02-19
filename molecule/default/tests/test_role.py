@@ -19,9 +19,9 @@ def test_packages_are_installed(host, name):
 @pytest.mark.parametrize('username,groupname,path', [
   ('root', 'root', '/etc/filebeat/filebeat.yml'),
 ])
-def test_curator_config_file(host, username, groupname, path):
-    curator_config = host.file(path)
-    assert curator_config.exists
-    assert curator_config.is_file
-    assert curator_config.user == username
-    assert curator_config.group == groupname
+def test_filebeat_config_file(host, username, groupname, path):
+    config = host.file(path)
+    assert config.exists
+    assert config.is_file
+    assert config.user == username
+    assert config.group == groupname
