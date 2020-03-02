@@ -23,6 +23,7 @@ Role Variables
 |------------------------------|----------|---------------------------------|-----------|-----------------------------------------------|
 | filebeat_dependencies        | true     | `[apt-transport-https]`         | list      |                                               |
 | filebeat_package             | true     | `filebeat`                      | string    |                                               |
+| filebeat_package_state       | true     | `present`                       | string    |                                               |
 | filebeat_use_oss             | true     | `false`                         | bool      | Whether to use Open Source version or not.    |
 | filebeat_config              | true     |                                 | dict      | Configuration object. See `defaults/main.yml`.|
 

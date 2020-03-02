@@ -22,7 +22,7 @@
 - name: Ensure filebeat package is installed
   apt:
     name: "{{ filebeat_package }}"
-    state: present
+    state: "{{ filebeat_package_state }}"
     update_cache: true
 
 - name: Setup filebeat.yml
