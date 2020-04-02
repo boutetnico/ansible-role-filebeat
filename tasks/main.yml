@@ -24,6 +24,8 @@
     name: "{{ filebeat_package }}"
     state: "{{ filebeat_package_state }}"
     update_cache: true
+  notify:
+    - restart filebeat
 
 - name: Setup filebeat.yml
   template:
