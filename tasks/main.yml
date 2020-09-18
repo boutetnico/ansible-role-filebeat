@@ -3,6 +3,7 @@
   apt:
     name: "{{ filebeat_dependencies }}"
     state: present
+    update_cache: true
 
 - name: Add filebeat signing key
   apt_key:
@@ -22,7 +23,7 @@
 - name: Ensure filebeat package is installed
   apt:
     name: "{{ filebeat_package }}"
-    state: "{{ filebeat_package_state }}"
+    state: "{{ filebeat_package_state }}"
     update_cache: true
   notify:
     - restart filebeat
