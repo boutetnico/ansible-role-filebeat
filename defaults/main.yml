@@ -12,13 +12,13 @@ filebeat_use_oss: false
 filebeat_config:
   filebeat:
     inputs:
-      - type: log
+      - type: filestream
         paths:
           - /var/log/syslog
           - /var/log/auth.log
         fields:
           type: syslog
-      - type: log
+      - type: filestream
         paths:
           - /var/log/nginx/access.log
           - /var/log/nginx/error.log

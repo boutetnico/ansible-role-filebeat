@@ -9,12 +9,36 @@ driver:
 platforms:
   - name: ansible-role-filebeat-debian-10
     image: debian:10
+    command: /lib/systemd/systemd
+    tmpfs:
+      - /run
+      - /run/lock
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
   - name: ansible-role-filebeat-debian-11
     image: debian:11
+    command: /lib/systemd/systemd
+    tmpfs:
+      - /run
+      - /run/lock
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
   - name: ansible-role-filebeat-ubuntu-1804
     image: ubuntu:18.04
+    command: /lib/systemd/systemd
+    tmpfs:
+      - /run
+      - /run/lock
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
   - name: ansible-role-filebeat-ubuntu-2004
     image: ubuntu:20.04
+    command: /lib/systemd/systemd
+    tmpfs:
+      - /run
+      - /run/lock
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
 
 lint: |
     yamllint .
