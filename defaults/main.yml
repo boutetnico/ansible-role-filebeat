@@ -2,12 +2,11 @@
 filebeat_dependencies:
   - apt-transport-https
   - gnupg
+  - python3-debian
 
 filebeat_package: filebeat
 
 filebeat_package_state: present
-
-filebeat_use_oss: false
 
 filebeat_config:
   filebeat:

@@ -5,20 +5,13 @@
     state: present
     update_cache: true
 
-- name: Add filebeat signing key
-  ansible.builtin.apt_key:
-    state: present
-    url: "{{ filebeat_signing_key }}"
-
-- name: Manage filebeat APT repository
-  ansible.builtin.apt_repository:
-    repo: "{{ filebeat_repository }}"
-    state: "{{ 'absent' if filebeat_use_oss else 'present' }}"
-
-- name: Manage filebeat OSS APT repository
-  ansible.builtin.apt_repository:
-    repo: "{{ filebeat_oss_repository }}"
-    state: "{{ 'present' if filebeat_use_oss else 'absent' }}"
+- name: Configure Elastic APT repository
+  ansible.builtin.deb822_repository:
+    components: main
+    name: elastic
+    signed_by: "{{ filebeat_apt_signed_by }}"
+    suites: stable
+    uris: "{{ filebeat_apt_uris }}"
 
 - name: Ensure filebeat package is installed
   ansible.builtin.apt:
