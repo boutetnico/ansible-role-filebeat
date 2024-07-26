@@ -9,7 +9,7 @@ This role installs and configures [Filebeat](https://www.elastic.co/guide/en/bea
 Requirements
 ------------
 
-Ansible 2.10 or newer.
+Ansible 2.15 or newer.
 
 Supported Platforms
 -------------------
@@ -24,10 +24,9 @@ Role Variables
 
 | Variable                     | Required | Default                  | Choices   | Comments                                      |
 |------------------------------|----------|--------------------------|-----------|-----------------------------------------------|
-| filebeat_dependencies        | true     | `[apt-transport-https]`  | list      |                                               |
+| filebeat_dependencies        | true     |                          | list      | See `defaults/main.yml`.                      |
 | filebeat_package             | true     | `filebeat`               | string    |                                               |
 | filebeat_package_state       | true     | `present`                | string    |                                               |
-| filebeat_use_oss             | true     | `false`                  | bool      | Whether to use Open Source version or not.    |
 | filebeat_config              | true     |                          | dict      | Configuration object. See `defaults/main.yml`.|
 
 Dependencies
