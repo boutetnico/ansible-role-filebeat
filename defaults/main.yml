@@ -1,6 +1,5 @@
 ---
 filebeat_dependencies:
-  - apt-transport-https
   - gnupg
   - python3-debian
 
